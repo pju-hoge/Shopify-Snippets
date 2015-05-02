@@ -10,5 +10,8 @@
 	{% when 'collection' %}
 		{% assign current_url = collection.url %}
 	{% when 'product' %}
-		{% assign current_url = product.url %}
+		{% assign current_url = product.selected_variant.url %}
+		{% if current_url = nil %}
+			{% assign current_url = product.url %}
+		{% endif %}
 {% endcase %}
